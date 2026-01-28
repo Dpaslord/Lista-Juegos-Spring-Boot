@@ -174,18 +174,22 @@ main {
    5. TARJETAS DE JUEGO (Index)
    ========================================= */
 .card-item {
-    background: var(--card-bg);
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+
+    /* Configuración de la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    min-height: 280px; /* Un poco más altas para lucir la imagen */
     display: flex;
-    flex-direction: column;
+    position: relative;
 }
 
 .card-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
     border-color: var(--primary-color);
 }
@@ -193,36 +197,45 @@ main {
 .card-link {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end; /* El texto se apoya abajo donde el degradado es más oscuro */
+    width: 100%;
     height: 100%;
     padding: 1.5rem;
+    text-decoration: none;
+}
+
+.card-text {
+    color: #ffffff;
+    /* Sombra de texto para garantizar legibilidad extrema */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .card-text h2 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: var(--text-main);
-    transition: color 0.2s;
-}
-
-.card-item:hover .card-text h2 {
-    color: var(--primary-color);
+    color: #ffffff; /* Forzamos blanco */
+    line-height: 1.2;
 }
 
 .card-text .rank {
     display: inline-block;
-    background-color: #e0e7ff;
-    color: var(--primary-color);
-    padding: 0.25rem 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
     border-radius: 6px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    text-shadow: none; /* Sin sombra en el badge para que se vea limpio */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.card-text p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
+.game-id-badge {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
     margin: 0;
+    font-weight: 500;
 }
 
 /* =========================================

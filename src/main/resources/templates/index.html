@@ -34,15 +34,19 @@
         th:text="${selectedPlatform != null} ? 'Juegos de ' + ${selectedPlatform} : 'Biblioteca de Juegos'">
         Biblioteca de Juegos
     </h2>
+
     <div class="games-container">
-        <section th:each="game : ${games}" class="card-item">
+        <section th:each="game : ${games}"
+                 class="card-item"
+                 th:style="'background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url(https://picsum.photos/seed/' + ${game.id} + '/300/200);'">
+
             <a th:href="@{/web/juego/{id}(id=${game.id})}" class="card-link">
                 <div class="card-text">
+                    <span class="rank" th:text="${game.platform}">Plataforma</span>
+
                     <h2 th:text="${game.title}">Nombre del Juego</h2>
-                    <span class="rank">ID del Sistema: <span th:text="${game.id}">0</span></span>
-                    <p><strong>Plataforma:</strong> <span th:text="${game.platform}">The Witcher 3</span></p>
-                    <hr>
-                    <p>Ver los detalles del juego.</p>
+
+                    <p class="game-id-badge">ID: <span th:text="${game.id}">0</span></p>
                 </div>
             </a>
         </section>
