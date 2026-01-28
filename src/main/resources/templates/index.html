@@ -1,0 +1,51 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Juegos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1>Lista de videojuegos</h1>
+        <p>Disfruta de tu propia coleccion en cualquier momento.</p>
+    </div>
+</header>
+
+<nav class="filter-menu">
+    <div class="filter-container">
+        <span class="filter-label">Filtrar por plataforma:</span>
+        <div class="filter-buttons">
+            <a th:href="@{/web/index}"
+               th:classappend="${selectedPlatform == null} ? 'active' : ''"
+               class="filter-btn">Todos</a>
+
+            <a th:each="p : ${platforms}"
+               th:href="@{/web/index/{platform}(platform=${p})}"
+               th:text="${p}"
+               th:classappend="${selectedPlatform == p} ? 'active' : ''"
+               class="filter-btn">Plataforma</a>
+        </div>
+    </div>
+</nav>
+
+<main id="about">
+    <h2 class="section-title"
+        th:text="${selectedPlatform != null} ? 'Juegos de ' + ${selectedPlatform} : 'Biblioteca de Juegos'">
+        Biblioteca de Juegos
+    </h2>
+    <div class="games-container">
+        <section th:each="game : ${games}" class="card-item">
+            <a th:href="@{/web/juego/{id}(id=${game.id})}" class="card-link">
+                <div class="card-text">
+                    <h2 th:text="${game.title}">Nombre del Juego</h2>
+                    <span class="rank">ID del Sistema: <span th:text="${game.id}">0</span></span>
+                    <p><strong>Plataforma:</strong> <span th:text="${game.platform}">The Witcher 3</span></p>
+                    <hr>
+                    <p>Ver los detalles del juego.</p>
+                </div>
+            </a>
+        </section>
+    </div>
+</main>
+</body>

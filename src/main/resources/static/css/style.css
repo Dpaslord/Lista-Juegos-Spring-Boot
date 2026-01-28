@@ -1,0 +1,341 @@
+/* =========================================
+   1. VARIABLES Y RESET
+   ========================================= */
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --secondary-color: #0ea5e9;
+    --background-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius: 16px;
+    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    font-family: var(--font-family), serif;
+    color: var(--text-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================================
+   2. HERO SECTION (Encabezado)
+   ========================================= */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 4rem 1rem;
+    text-align: center;
+    margin-bottom: 0;
+    box-shadow: var(--shadow-md);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    letter-spacing: -0.025em;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* =========================================
+   3. BARRA DE NAVEGACIÓN Y FILTROS
+   ========================================= */
+.filter-menu {
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.filter-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.filter-label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    color: var(--primary-color);
+    background-color: #eef2ff;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+}
+
+/* =========================================
+   4. LAYOUT PRINCIPAL (Index)
+   ========================================= */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    min-height: 60vh;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+.games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* =========================================
+   5. TARJETAS DE JUEGO (Index)
+   ========================================= */
+.card-item {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+}
+
+.card-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    transition: color 0.2s;
+}
+
+.card-item:hover .card-text h2 {
+    color: var(--primary-color);
+}
+
+.card-text .rank {
+    display: inline-block;
+    background-color: #e0e7ff;
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.card-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* =========================================
+   6. PÁGINA DE DETALLES (Diseño según Esquema)
+   ========================================= */
+.details-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-detail-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+.game-header-row {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.game-image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #f3f4f6;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+}
+
+.game-main-info h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.info-grid p {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.game-description {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+.game-description h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.game-description p {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.back-link {
+    margin-top: 3rem;
+    padding: 0.75rem 3rem;
+    background-color: white;
+    color: var(--text-main);
+    border: 2px solid var(--text-main);
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    background-color: var(--text-main);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .game-header-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   7. RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .games-container {
+        grid-template-columns: 1fr;
+    }
+}
