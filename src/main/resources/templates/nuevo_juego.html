@@ -1,0 +1,65 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir Nuevo Juego</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <h1>Lista de videojuegos</h1>
+        <p>Disfruta de tu propia coleccion en cualquier momento.</p>
+    </div>
+</header>
+
+<nav class="filter-menu">
+    <div class="filter-container">
+        <span class="filter-label">Filtrar por plataforma:</span>
+        <div class="filter-buttons">
+            <a th:href="@{/web/index}" class="filter-btn">Todos</a>
+            <a th:each="p : ${platforms}"
+               th:href="@{/web/index/{platform}(platform=${p})}"
+               th:text="${p}"
+               class="filter-btn">Plataforma</a>
+        </div>
+    </div>
+</nav>
+
+<main id="about">
+    <h2 class="section-title">Añadir Nuevo Juego</h2>
+
+    <div class="form-container">
+        <form th:action="@{/web/guardar}" th:object="${game}" method="post">
+            <div class="form-group">
+                <label for="title" class="form-label">Título:</label>
+                <input type="text" id="title" th:field="*{title}" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="platform" class="form-label">Plataforma:</label>
+                <input type="text" id="platform" th:field="*{platform}" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="year" class="form-label">Año:</label>
+                <input type="number" id="year" th:field="*{year}" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="form-label">Descripción:</label>
+                <textarea id="description" th:field="*{description}" rows="4" class="form-input"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="imageUrl" class="form-label">URL de Imagen:</label>
+                <input type="text" id="imageUrl" th:field="*{imageUrl}" class="form-input">
+            </div>
+
+            <div class="form-actions">
+                <a th:href="@{/web/index}" class="btn-cancel">Volver</a>
+                <button type="submit" class="btn-submit">Guardar</button>
+            </div>
+        </form>
+    </div>
+</main>
+</body>

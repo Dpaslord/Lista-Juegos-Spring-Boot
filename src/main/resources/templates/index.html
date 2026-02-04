@@ -25,6 +25,8 @@
                th:text="${p}"
                th:classappend="${selectedPlatform == p} ? 'active' : ''"
                class="filter-btn">Plataforma</a>
+
+            <a th:href="@{/web/nuevo}" class="filter-btn" style="margin-left: auto; background-color: #4CAF50;">Añadir Juego</a>
         </div>
     </div>
 </nav>

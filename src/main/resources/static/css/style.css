@@ -325,6 +325,89 @@ main {
     color: white;
 }
 
+/* =========================================
+   7. FORMULARIO NUEVO JUEGO
+   ========================================= */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2.5rem;
+    gap: 1rem;
+}
+
+.btn-cancel {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.btn-cancel:hover {
+    background-color: #f3f4f6;
+    color: var(--text-main);
+}
+
+.btn-submit {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-hover);
+}
+
 @media (max-width: 768px) {
     .game-header-row {
         grid-template-columns: 1fr;
@@ -332,7 +415,7 @@ main {
 }
 
 /* =========================================
-   7. RESPONSIVE
+   8. RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
     .hero-content h1 {

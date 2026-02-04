@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
@@ -45,5 +46,17 @@ class WebController {
             model.addAttribute("error", "No existe el juego con ID: " + id);
             return "error";
         });
+    }
+
+    @GetMapping("/nuevo")
+    public String nuevoJuego(Model model) {
+        model.addAttribute("game", new Game());
+        return "nuevo_juego";
+    }
+
+    @PostMapping("/guardar")
+    public String guardarJuego(@ModelAttribute Game game) {
+        gameRepository.save(game);
+        return "redirect:/web/index";
     }
 }
